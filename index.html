@@ -11,7 +11,7 @@
   <div id="app">
     <div class="toolbar">
       <button v-on:click="createNote()" class="toolbar-button toolbar-button-new">New</button>
-      <button class="toolbar-button toolbar-button-delete">Delete</button>
+      <button v-on:click="deleteNote(selectedNote)" class="toolbar-button toolbar-button-delete">Delete</button>
       <input class="toolbar-search" type="text" placeholder="Search...">
     </div>
     <div class="note-container">
@@ -27,6 +27,7 @@
       </div>
     </div>
     <div class="note-editor">
+      <div v-if="selectedNote.id" class="note-editor"></div>
       <p class="note-editor-info">{{ formatTimestamp(selectedNote.timestamp) }}</p>
       <textarea
       v-model="selectedNote.body"
